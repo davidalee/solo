@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Crowd-Sourced Product Reviews</title>
+  <!-- Dependencies -->
+  <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <!-- Watson API -->
+  <!-- Twitter API -->
+  <!-- Scripts -->
+  <script src="scripts/search.js"></script>
+  <script src="scripts/sampletweets.js"></script>
+
+  <!-- Temporary - move somewhere else -->
+  <script type="text/javascript">
+    $(document).ready(function() {
+      // Uncomment this once Twitter API is hooked up
+      // $('#submit').on('click', function(e){
+      //     e.preventDefault();
+      //     var query = $('#searchQuery').val();
+      //     searchTwitter(query);
+      //   });
+
+      // $('#submit').on('click', function(e){
+      //     e.preventDefault();
+      //     searchTwitterUsingSampleTweets(sampleTweets);
+      //   }); 
+    });
+  </script>
+</head>
+<body>
+  <div id="container">
+    <form id="search">
+      <input id="searchQuery" type="text" placeholder="What would you like to search for?">
+      <input id="submit" type="submit">
+    </form>
+  </div>
+
+</body>
+</html>

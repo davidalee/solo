@@ -19,17 +19,34 @@ Once the project moves into development, the press release can be used as a touc
 ## Heading ##
   > Name the product in a way the reader (i.e. your target customers) will understand.
 
+  Crowd-Sourced Product Reviews
+
+  ** Pivoting to Personality Analysis
+
 ## Sub-Heading ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  
+  Target market are companies who want to gauge user sentiment about a variety of things such as new product releases.
+
+  ** Pivot
+
 
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
 
+  The product analyzes a variety of mediums (such as social media websites, news websites, and industry-specific websites such as engadget/cnet for product reviews) to gauge user sentiment about a certain product, announcement, or event.
+
+  ** Pivot
+
 ## Problem ##
   > Describe the problem your product solves.
 
+  Companies don't have a clear idea of what users actually think about a new product or an announcement they've recently made. Press coverage often offers a skewed, sensationalistic perspective and will veer towards one extreme or the other.
+
 ## Solution ##
   > Describe how your product elegantly solves the problem.
+
+  My product offers a balanced, objective perspective on user sentiment surrounding any given announcement or event, drawing on a large number of sources to offer a data-backed picture of what users actually think about a given announcement, event, or product release.
 
 ## Quote from You ##
   > A quote from a spokesperson in your company.
@@ -39,6 +56,8 @@ Once the project moves into development, the press release can be used as a touc
 
 ## Customer Quote ##
   > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+
+  "We didn't know how users perceived our new product other than what the mainstream websites like Cnet and Engadget said about it. This product helped us gain a more well-rounded perspective on the types of issues that were most commonly experienced, as well as providing us with a very detailed breakdown of what features users liked and disliked the most. This breakdown proved to be tremendously helpful for our next product iteration, allowing us to keep and iterate on the features users liked the most, while also giving us a clear blueprint of what features needed to be improved or even removed entirely."
 
 ## Closing and Call to Action ##
   > Wrap it up and give pointers where the reader should go next.

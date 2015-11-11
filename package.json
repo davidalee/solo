@@ -1,0 +1,26 @@
+{
+  "name": "crowd-sourced-product-reviews",
+  "version": "1.0.0",
+  "description": "Analyzes a variety o mediums to gauge user sentiment about a certain product, event, or announcement.",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/giwook/2015-10-solo"
+  },
+  "author": "David A. Lee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/giwook/2015-10-solo/issues"
+  },
+  "homepage": "https://github.com/giwook/2015-10-solo",
+  "dependencies": {
+    "express": "^4.13.3",
+    "jquery": "^2.1.4"
+  }
+}
