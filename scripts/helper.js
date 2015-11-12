@@ -1,3 +1,4 @@
 var convertPercentage = function(num){
-  return String(num*100).slice(0,2) + '\%';
+  var x = String(num*100).match(/^(\d{0,2})\./) ? String(num*100).match(/^(\d{0,2})\./)[1] : 0;
+  return x + '\%';
 };
