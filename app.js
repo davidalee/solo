@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 var fs = require('fs');
 var watson = require('./scripts/watson');
+var musixMatch = require('./scripts/musixmatch');
 var app = express();
 
 // app.set('views', __dirname + '/views');
@@ -27,77 +28,23 @@ app.get('/search', function(req, res){
   var query = req._parsedUrl.query; 
 
   // TODO: Send search query to music lyric API
+  var lyrics = musixMatch.getLyrics(query);
+  console.log('lyrics we got back >', lyrics);
 
-  // Currently just sending in sample file (variable someText)
-  watson.profile({
-    text: someText,
-    language: 'en',
-    acceptLanguage: 'en-US'
-  },
-
-  // TODO: Accept URLs as search queries
-  // grab HTML of site, send to watson as content-type: HTML
-
-  function (err, profile) {
-    if( err ){
-      console.log('watson error: ', err);
-    } else {
-      res.json(profile);
-    }
-  })
+  // TODO: Uncomment this when we want to start sending queries to Watson again and change someText to the 
+  // data we're getting back from the music API
+  // watson.profile({
+  //   text: someText,
+  //   language: 'en',
+  //   acceptLanguage: 'en-US'
+  // },
+  // function (err, profile) {
+  //   if( err ){
+  //     console.log('watson error: ', err);
+  //   } else {
+  //     res.json(profile);
+  //   }
+  // })
 });
 
-
-// *****
-// The code snippet below is for the ajax call being used in demo implementation
-// *****
-
-// app.post('/api/profile', function(req, res){
-//   console.log('hi', req.body);
-//   // var query = req._parsedUrl.query; 
-
-//   // TODO: Send search query to music lyric API
-
-//   watson.profile({
-//     text: someText,
-//     language: 'en',
-//     acceptLanguage: 'en-US'
-//   },
-
-//   // TODO: Accept URLs as search queries
-//   // grab HTML of site, send to watson as content-type: HTML
-
-//   function (err, profile) {
-//     if( err ){
-//       console.log('watson error: ', err);
-//     } else {
-//       // var paragraphs = watson.textSummary.assemble(profile.tree);
-//       console.log('yo', paragraphs);
-//       res.json(profile);
-//     }
-//   })
-// });
-
-
-// personality_insights.profile({
-//   text: data,
-//   language: 'en' },
-//   function (err, response) {
-//     if (err)
-//       console.log('watson error:', err);
-//     else
-//       console.log(JSON.stringify(response, null, 2));
-// });
-
 app.listen(3000);
-
-// app.get('/api/profile', function(req, res, next) {
-//   var parameters = extend(req.body, { acceptLanguage : i18n.lng() });
-
-//   personalityInsights.profile(parameters, function(err, profile) {
-//     if (err)
-//       return next(err);
-//     else
-//       return res.json(profile);
-//   });
-// });

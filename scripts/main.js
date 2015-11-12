@@ -1,4 +1,5 @@
 // This determines whether <Trait /> is rendered
+// tODO:  can probably remove this global variable
 window.searchSubmitted = false;
 
 var App = React.createClass({
@@ -10,6 +11,7 @@ var App = React.createClass({
     return (
       <div className="app">
         <SearchGroup />
+        // TODO: Can probably remove this part
         { window.searchSubmitted ? <Trait /> : null }
       </div>
     );
@@ -78,7 +80,7 @@ var SearchText = React.createClass({
 var Trait = React.createClass({
   render: function() {
     // console.log('rendering <Trait />', this);
-    var traitName = this.props.data.name;
+    var traitName = this.props.data.name === 'Big 5' ? this.props.data.name + ' (Personality)' : this.props.data.name;
     // Is array of sub-traits, has .name, .percentage, .children (array of sub-sub-traits)
     var subTraits = this.props.data.children[0].children;
     // console.log('yo', this.props.data);
@@ -97,9 +99,6 @@ var SubTrait = React.createClass({
   render: function() {
     // Array of subTraits with .name, .percentage, and .children (array of subsubtraits)
     var subTraits = this.props.data;
-    // var subTraitType = this.props.data.;
-
-    console.log('DUDE', subTraits);
     var subTraitNodes = subTraits.map(function(subTrait){
       // console.log('yo', subTrait);
       var subSubTraitNodes;
