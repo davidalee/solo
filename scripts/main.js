@@ -135,60 +135,64 @@ var SearchText = React.createClass({
 //       }
 
 var Trait = React.createClass({
-  // getInitialState: function(){
-  //   return { subtraits: [] };
-  // },
   render: function() {
-    console.log('rendering <Trait />', this);
+    // console.log('rendering <Trait />', this);
     var traitName = this.props.data.name;
+    // Is array of sub-traits, has .name, .percentage, .children (array of sub-sub-traits)
+    var subTraits = this.props.data.children[0].children;
 
-    for( var i = 0; i < this.props.data.children[0].length; i++ ){
-      // .children = array of sub-sub-traits
-      // .id = the title of the sub-trait
-      // .name = optional extra description of sub-trait, if different from .id then render .name in addition to .id
-      // .percentage = score
-      var subTrait = this.props.data.children[i];
-
-    }
     return (
-      // <div className="trait">
-      //   <div className="title">
-      //     { this.props.data.children.id }
-      //   </div>
-      //   <div className="score">
-      //     { this.state.subtraits.percentage }
-      //   </div>
-      //   // Iterate over subtraits, creating a new subtrait for each one
-      //   // NOt sure if i'm passing in the right element (this.props.data.children ??)
-      //   // <SubTrait data = { this.props.data.children } />
-      //   { this.state.subtraits.children.map(function(subTrait){
-      //     return (
-      //       <SubTrait data={ subTrait } />
-      //   );
-      // })}
-      // </div>
-
       // Iterate over this.props.data.children, which will give sub-traits and have id property (name of trait)
-      <h2>{ traitName }</h2>
+      <div className="container">
+        <h2>{ traitName }</h2>
+        <SubTrait data={ subTraits } />
+      </div>
     );
   }
 });
 
 var SubTrait = React.createClass({
+
   render: function() {
+    // Array of subTraits with .name, .percentage, and .children (array of subsubtraits)
+    var subTraits = this.props.data;
+    var subTraitNodes = subTraits.map(function(subTrait){
+      console.log('yo', subTrait);
+      return (
+        <div>
+          <h4>{ subTrait.name }</h4>
+          <span className="score">{ convertPercentage(subTrait.percentage) }</span>
+          <SubSubTrait data={ subTrait.children } />
+        </div>
+      );
+    });
+
     return (
-      <div className="subtrait">
-        <SubSubTrait />
-      </div>
+    <div className = "subTraitContainer">
+      { subTraitNodes }
+    </div>
     );
   }
 });
 
 var SubSubTrait = React.createClass({
   render: function() {
+    // If we have sub-sub-traits
+    var subSubTraitNodes;
+    if( this.props.data ){
+      subSubTraitNodes = this.props.data.map(function(subSubTrait){
+
+      });
+    }
+
+    // If sub-sub-traits exist
+    if( subSubTraitNodes ){
+
+    }
+
     return (
       <div className="subsubtrait">
-        
+        <h5>Sub-Sub-Trait</h5>
       </div>
     );
   }
