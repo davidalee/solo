@@ -5,8 +5,6 @@ var watson = require('./scripts/watson');
 var musixMatch = require('./scripts/musixmatch');
 var app = express();
 
-// app.set('views', __dirname + '/views');
-// app.set('view engine', 'ejs');
 app.use(express.static(__dirname));
 
 // **** REMOVE BELOW *****
@@ -24,27 +22,22 @@ fs.readFile(kanyePath, 'utf8', function(err, data){
 // **** REMOVE ABOVE *****
 
 app.get('/search', function(req, res){
-  // This is our search query
-  var query = req._parsedUrl.query; 
+  // Uncomment when dynamically getting lyrics (i.e. using Musixmatch API)
+  // var query = req._parsedUrl.query;
+  // musixMatch.getLyrics(query);
 
-  // TODO: Send search query to music lyric API
-  var lyrics = musixMatch.getLyrics(query);
-  console.log('lyrics we got back >', lyrics);
-
-  // TODO: Uncomment this when we want to start sending queries to Watson again and change someText to the 
-  // data we're getting back from the music API
-  // watson.profile({
-  //   text: someText,
-  //   language: 'en',
-  //   acceptLanguage: 'en-US'
-  // },
-  // function (err, profile) {
-  //   if( err ){
-  //     console.log('watson error: ', err);
-  //   } else {
-  //     res.json(profile);
-  //   }
-  // })
+  watson.profile({
+    text: someText,
+    language: 'en',
+    acceptLanguage: 'en-US'
+  },
+  function (err, profile) {
+    if( err ){
+      console.log('watson error: ', err);
+    } else {
+      res.json(profile);
+    }
+  })
 });
 
 app.listen(3000);

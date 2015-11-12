@@ -9,7 +9,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
   <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
   <!-- Scripts -->
-  <script src="scripts/search.js"></script>
   <script src="scripts/helper.js"></script>
   <script type="text/babel" src="scripts/main.js"></script>
   <!-- CSS -->
@@ -18,62 +17,4 @@
 <body>
   <div id="content"></div>
 </body>
-
-<!-- Temporary spot for this code ... Move to a better location! -->
-<!--<script>
-$(document).ready(function(){
-  $('#submit').on('click', function(e){
-    e.preventDefault();
-    var query = $('#searchQuery').val();
-    // Call the helper function that will get my data, whether it's a music lyric API or
-    // Twitter API or whatever
-    console.log('sending query', query);
-    $.get('/search', query, function(data){
-      // TODO: Do something with data being returned
-      var personality = data.tree.children[0];
-      var needs = data.tree.children[1];
-      var values = data.tree.children[2];
-
-      var subCatsForPersonality = personality.children[0].children; // array-like object of sub-traits
-
-      for( var i in subCatsForPersonality ){
-        // console.log(subCatsForPersonality[i]);
-        var subTrait = subCatsForPersonality[i];
-        var subTraitName = subTrait.id;
-        var subTraitScore = subTrait.percentage;
-
-        var subSubTrait = subTrait.children; // Array of sub-sub-traits
-
-        for( var j = 0; j < subSubTrait.length; j++ ){
-          var currentSubSubTrait = subSubTrait[j];
-          var currentSubSubTraitName = currentSubSubTrait.id;
-          var currentSubSubTraitScore = currentSubSubTrait.percentage;
-          
-          // Some sub-sub-traits have names that are slightly more descriptive than the id
-          // in which case, we'll concat the name prop to the id inside parens
-          if( currentSubSubTrait.id !== currentSubSubTrait.name ){
-            currentSubSubTraitName += ' (' + currentSubSubTrait.name + ')';
-          }
-
-          console.log(currentSubSubTrait);
-        }
-      }
-      // console.log(needs);
-      // console.log(values);
-    });
-
-  })
-});
-
-// function showTextSummary(data) {
-//   console.log('showTextSummary()');
-//   var paragraphs = textSummary.assemble(data.tree);
-//   var div = $('.summary-div');
-//   $('.outputMessageFootnote').text(data.word_count_message ? '**' + data.word_count_message + '.' : '');
-//   div.empty();
-//   paragraphs.forEach(function(sentences) {
-//     $('<p></p>').text(sentences.join(' ')).appendTo(div);
-//   });
-// }
-</script>-->
 </html>

@@ -6,39 +6,35 @@ var musixMatch = {
 };
 
 musixMatch.getLyrics = function(artist){
-  // track search by artist
-    // track.search?q_artist=artist&f_has_lyrics=1&format=json
-      // artist needs to be URL encoded
-    // get track id's of each of the tracks, store in arrray
   var trackList;
   var trackIds = [];
 
   // TODO: Re-factor using promises (bluebird)
+  // Currently, we're not returning the concatenated lyrics string that we need to send to Watson.
+  // Once promises are setup, we can wait until we're finished getting lyrics for all of the tracks
+  // and then return concatenatedLyrics, which will then be handed to Watson as a part of the API call
   musixMatch.getTracks(artist, function(x){
     trackList = x.message.body.track_list;
     trackIds = trackList.map(function(track){
       return track.track.track_id;
     });
 
-    musixMatch.grabLyrics(trackIds);
+    musixMatch.downloadLyrics(trackIds);
     
   });
 
-  
-  
-  // request lyrics for each of our tracks in the array using track_id
-    // track.lyrics.get?track_id=15953433
+  musixMatch.downloadLyrics(trackIds, function(lyric){
+      concatenatedLyrics += lyric + '\n';
+  });
 
-
-
-
-
-  // Store each of the lyrics files we get back and concatenate them
-  // Return the concatenated string
+  // Uncomment below and chain to downloadLyrics() once promises are setup
+    // .then(function(){
+      // return concatenatedLyrics;
+    // });
 };
 
 musixMatch.getTracks = function(artist, next){
-  http.get(this.url + 'track.search?' + this.apiKey + '&q_artist=' + encodeURIComponent(artist) + '&f_has_lyrics=1&format=json&page_size=10', function(res){
+  http.get(this.url + 'track.search?' + this.apiKey + '&q_artist=' + encodeURIComponent(artist) + '&f_has_lyrics=1&format=json&page_size=100', function(res){
     var data = '';
     res.setEncoding('utf8');
     res.on('data', function(chunk){
