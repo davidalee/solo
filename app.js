@@ -28,6 +28,7 @@ app.get('/search', function(req, res){
 
   // TODO: Send search query to music lyric API
 
+  // Currently just sending in sample file (variable someText)
   watson.profile({
     text: someText,
     language: 'en',
