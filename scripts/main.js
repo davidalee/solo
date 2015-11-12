@@ -61,7 +61,7 @@ var SearchGroup = React.createClass({
       <div className = "search-group">
         <SearchText onSearchSubmit={ this.handleSearch }/>
         { Object.keys(this.state.traits).length && 
-          <div className="flextrait">
+          <div>
             { this.state.traits.map(function(trait) {
               console.log('heres a trait', trait);
               return (
@@ -91,7 +91,7 @@ var SearchText = React.createClass({
       <div>
         <form name="searchform" onSubmit={ this.handleSubmit }>
           <input type="text" name="searchbox" placeholder="Type in artist's name" />
-          <input type="submit" ref="submit" />
+          <input type="submit" value="Analyze" />
         </form>
       </div>
       );
@@ -139,7 +139,9 @@ var Trait = React.createClass({
   //   return { subtraits: [] };
   // },
   render: function() {
-    console.log('rendering <Trait />');
+    console.log('rendering <Trait />', this);
+    var traitName = this.props.data.name;
+
     for( var i = 0; i < this.props.data.children[0].length; i++ ){
       // .children = array of sub-sub-traits
       // .id = the title of the sub-trait
@@ -167,7 +169,7 @@ var Trait = React.createClass({
       // </div>
 
       // Iterate over this.props.data.children, which will give sub-traits and have id property (name of trait)
-      <div></div>
+      <h2>{ traitName }</h2>
     );
   }
 });
