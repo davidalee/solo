@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Crowd-Sourced Product Reviews</title>
+  <!-- Dependencies -->
+  <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+  <!--<script src="./bundle3.js"></script>-->
+  <!-- Watson API -->
+  <!-- Twitter API -->
+  <!-- Scripts -->
+  <script src="scripts/search.js"></script>
+  <script src="scripts/helper.js"></script>
+  <script src="scripts/sampletweets.js"></script>
+  
+  <!-- Temporary! Move to a better location -->
+  <script>
+  $(document).ready(function(){
+    $('#submit').on('click', function(e){
+      e.preventDefault();
+      var query = $('#searchQuery').val();
+      // Call the helper function that will get my data, whether it's a music lyric API or
+      // Twitter API or whatever
+      console.log('sending query', query);
+      $.get('/search', query, function(data){
+        // TODO: Do something with data being returned
+        var personality = data.tree.children[0];
+        var needs = data.tree.children[1];
+        var values = data.tree.children[2];
+
+        var subCatsForPersonality = personality.children[0].children;
+
+        for( var i in subCatsForPersonality ){
+          // console.log(subCatsForPersonality[i]);
+          
+        }
+        // console.log(needs);
+        // console.log(values);
+      });
+
+
+
+    // ****** Below is from demo *****
+
+    // $.ajax({
+    //   headers: {
+
+    //   },
+    //   type: 'POST',
+    //   data: {
+    //     text: query,
+    //     language: 'en'
+    //   },
+    //   url: '/api/profile',
+    //   dataType: 'json',
+    //   success: function(data){
+    //     if( data.error ){
+    //       console.log('ajax call error: ', data.error);
+    //     } else {
+    //       showTextSummary(data);
+    //     }
+    //   },
+    //   error: function(err){
+    //     console.log('ajax error: ', err);
+    //   }
+    // });
+    })
+  });
+
+  // function showTextSummary(data) {
+  //   console.log('showTextSummary()');
+  //   var paragraphs = textSummary.assemble(data.tree);
+  //   var div = $('.summary-div');
+  //   $('.outputMessageFootnote').text(data.word_count_message ? '**' + data.word_count_message + '.' : '');
+  //   div.empty();
+  //   paragraphs.forEach(function(sentences) {
+  //     $('<p></p>').text(sentences.join(' ')).appendTo(div);
+  //   });
+  // }
+  </script>
+  
+</head>
+<body>
+  <div id="container">
+    <form id="search">
+      <input id="searchQuery" type="text" placeholder="What would you like to search for?">
+      <input id="submit" type="submit">
+    </form>
+    <div id="results">
+      <div id="personality" class="container">
+        <div id="personality0" class="subcontainer"></div>
+        <div id="personality1" class="subcontainer"></div>
+        <div id="personality2" class="subcontainer"></div>
+        <div id="personality3" class="subcontainer"></div>
+        <div id="personality4" class="subcontainer"></div>
+      </div>
+      <div id="needs" class="container">
+        <!-- TODO: Create sub-containers -->
+      </div>
+      <div id="values" class="container">
+        <!-- TODO: Create sub-containers -->
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -21,6 +21,8 @@
   "homepage": "https://github.com/giwook/2015-10-solo",
   "dependencies": {
     "express": "^4.13.3",
-    "jquery": "^2.1.4"
+    "jquery": "^2.1.4",
+    "require": "^2.4.20",
+    "watson-developer-cloud": "^0.10.6"
   }
 }
