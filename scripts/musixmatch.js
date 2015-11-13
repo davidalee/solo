@@ -1,7 +1,7 @@
 var http = require('http');
 
 var musixMatch = {
-  apiKey: 'apikey=21454e81f8235127b6d31fb57b91502d',
+  apiKey: 'apikey=', // insert api key for musixMatch
   url: 'http://api.musixmatch.com/ws/1.1/',  
 };
 
