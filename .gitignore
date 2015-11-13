@@ -1,4 +1,5 @@
 ### node etc ###
+scratch
 
 # Logs
 logs
@@ -33,4 +34,3 @@ bower_components/
 .floobit
 .floo
 .flooignore
-_scratch
